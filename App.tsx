@@ -1,20 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { useFonts } from 'expo-font'
 
 export default function App() {
+  const [ fontsLoaded ] = useFonts({
+    'Anek-Gurmukhi': require('./assets/fonts/AnekGurmukhi.ttf') 
+  })
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {fontsLoaded ? <Text style={{ fontFamily: 'Anek-Gurmukhi', fontSize: 24 }}>BG Team App</Text> : <View />}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
