@@ -1,13 +1,37 @@
-import { Text, View } from 'react-native';
+import { View, StatusBar } from 'react-native';
+import { Center, Text, NativeBaseProvider, Heading } from 'native-base'
+
+import { THEME } from './src/theme'
+
 import { useFonts } from 'expo-font'
+
+import { Loading } from '@components/Loading';
+import { SignIn } from '@screens/SignIn';
+
 
 export default function App() {
   const [ fontsLoaded ] = useFonts({
-    'Anek-Gurmukhi': require('./assets/fonts/AnekGurmukhi.ttf') 
+    'AnekGurmukhi_Regular': require('@assets/fonts/AnekGurmukhi-Regular.ttf'), 
+    'AnekGurmukhi_Bold': require('@assets/fonts/AnekGurmukhi-Bold.ttf'), 
   })
+
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      {fontsLoaded ? <Text style={{ fontFamily: 'Anek-Gurmukhi', fontSize: 24 }}>BG Team App</Text> : <View />}
-    </View>
+    <NativeBaseProvider theme={THEME}>
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor='transparent'
+        translucent
+      />
+      <Center bg='bg.900' flex={1}>
+        {
+          fontsLoaded ? (
+            <SignIn />
+          ) : (
+            <Loading />
+          )
+        }
+      </Center>
+    </NativeBaseProvider>
   );
 }
