@@ -1,5 +1,5 @@
-import { View, StatusBar } from 'react-native';
-import { Center, Text, NativeBaseProvider, Heading } from 'native-base'
+import { StatusBar } from 'react-native';
+import { Center, NativeBaseProvider, Text } from 'native-base'
 
 import { THEME } from './src/theme'
 
@@ -10,6 +10,7 @@ import { SignIn } from '@screens/SignIn';
 
 
 export default function App() {
+  // fontFamily is not applied in Android, need to see this!
   const [ fontsLoaded ] = useFonts({
     'AnekGurmukhi_Regular': require('@assets/fonts/AnekGurmukhi-Regular.ttf'), 
     'AnekGurmukhi_Bold': require('@assets/fonts/AnekGurmukhi-Bold.ttf'), 
@@ -23,15 +24,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      <Center bg='bg.900' flex={1}>
-        {
-          fontsLoaded ? (
-            <SignIn />
-          ) : (
-            <Loading />
-          )
-        }
-      </Center>
+      { fontsLoaded ? <SignIn /> : <Loading /> }
     </NativeBaseProvider>
   );
 }

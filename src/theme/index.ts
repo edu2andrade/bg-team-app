@@ -16,6 +16,10 @@ export const THEME = extendTheme(
         100: '#EBEBEB',
       }
     },
+    fonts: {
+      heading: 'AnekGurmukhi_Bold',
+      body: 'AnekGurmukhi_Regular',
+    },
     fontSizes: {
       caption: 12,
       body_2: 14,

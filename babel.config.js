@@ -8,6 +8,7 @@ module.exports = function(api) {
         {
           root: ['./src'],
           alias: {
+            // Don't forget to include this paths into tsconfig.json too!
             '@assets': './src/assets',
             '@components': './src/components',
             '@screens': './src/screens',
