@@ -1,7 +1,7 @@
 import { StatusBar } from 'react-native';
-import { Center, NativeBaseProvider, Text } from 'native-base'
+import { NativeBaseProvider } from 'native-base'
 
-import { THEME } from './src/theme'
+import { customTheme } from './src/theme'
 
 import { useFonts } from 'expo-font'
 
@@ -10,6 +10,7 @@ import { SignIn } from '@screens/SignIn';
 
 
 export default function App() {
+
   // fontFamily is not applied in Android, need to see this!
   const [ fontsLoaded ] = useFonts({
     'AnekGurmukhi_Regular': require('@assets/fonts/AnekGurmukhi-Regular.ttf'), 
@@ -18,7 +19,7 @@ export default function App() {
 
 
   return (
-    <NativeBaseProvider theme={THEME}>
+    <NativeBaseProvider theme={customTheme}>
       <StatusBar
         barStyle='light-content'
         backgroundColor='transparent'
