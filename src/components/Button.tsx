@@ -17,7 +17,7 @@ export const Button = ({ title, variant, ...rest }: ButtonProps) => {
       }}
       {...rest}
     >
-      <Text fontSize='body_1' fontFamily='heading' color='text.100'>
+      <Text fontSize='body_1' fontWeight={700} color='text.100'>
         {title}
       </Text>
     </NativeBaseButton>

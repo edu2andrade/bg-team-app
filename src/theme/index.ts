@@ -15,9 +15,23 @@ export const customTheme = extendTheme({
       100: '#EBEBEB',
     }
   },
+  fontConfig: {
+    Exo: {
+      300: {
+        normal: 'Exo_300Light'
+      },
+      500: {
+        normal: 'Exo_500Medium'
+      },
+      700: {
+        normal: 'Exo_700Bold'
+      },
+    }
+  },
   fonts: {
-    heading: 'AnekGurmukhi_Bold',
-    body: 'AnekGurmukhi_Regular',
+    heading: 'Exo',
+    subheading: 'Exo',
+    body: 'Exo',
   },
   fontSizes: {
     caption: 12,

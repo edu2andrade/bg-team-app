@@ -1,8 +1,10 @@
 import { Heading, VStack, Text, Center, Link } from 'native-base'
-import ProfilePic from '@assets/profile-pic.svg'
-import { Input } from '@components/Input'
+
+import LogoImg from '@assets/bgteam_logo.svg'
 import EmailSvg from '@assets/email.svg'
 import LockSvg from '@assets/lock.svg'
+
+import { Input } from '@components/Input'
 import { Button } from '@components/Button'
 
 export const SignIn = () => {
@@ -10,12 +12,11 @@ export const SignIn = () => {
     <VStack flex={1} bg='bg.900' px={10}>
       <Center my={'20'}>
         <Center>
-          <ProfilePic/>
+          <LogoImg height={140}/>
           <Heading
             mt={6}
             color='text.100'
             fontSize='heading_1'
-            fontFamily='heading'
             textTransform='uppercase'
           >
             BG Team
@@ -23,6 +24,7 @@ export const SignIn = () => {
           <Text
             color='text.400'
             fontSize='subheading'
+            fontWeight={500}
           >
             Login to start
           </Text>
@@ -43,10 +45,10 @@ export const SignIn = () => {
         </Center>
         <Center mt={6}>
           <Link href="/">
-            <Text color='text.400'>Forgot password? Recover here!</Text>
+            <Text mb={2} underline color='text.400' textDecoration='underline'>Forgot password? Recover here!</Text>
           </Link>
           <Link href="/">
-            <Text color='text.400'>Do not have an account? Register here!</Text>
+            <Text mb={2} underline color='text.400'>Do not have an account? Register here!</Text>
           </Link>
         </Center>
       </Center>
