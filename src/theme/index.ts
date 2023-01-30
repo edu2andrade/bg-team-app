@@ -44,8 +44,11 @@ export const customTheme = extendTheme({
   },
 })
 
+// Get the type of the CustomTheme
 type CustomThemeType = typeof customTheme
-
+// Extend the internal NativeBase Theme (Need to confirm this change)
+// https://docs.nativebase.io/typescript
+// https://typescript-eslint.io/rules/no-empty-interface/
 declare module 'native-base' {
-  interface ICustomTheme extends CustomThemeType {}
+  interface ICustomTheme extends CustomThemeType, CustomThemeType {}
 }

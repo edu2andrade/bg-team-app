@@ -25,7 +25,7 @@ export const Input = ({icon, ...rest}: InputProps) => {
       InputLeftElement={
         <Icon as={icon} ml='4' />
       }
-    {...rest}
+      {...rest}
     />
   )
 }

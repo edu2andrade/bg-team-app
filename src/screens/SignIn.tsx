@@ -45,10 +45,14 @@ export const SignIn = () => {
         </Center>
         <Center mt={6}>
           <Link href="/">
-            <Text mb={2} underline color='text.400' textDecoration='underline'>Forgot password? Recover here!</Text>
+            <Text mb={2} underline color='text.400' textDecoration='underline'>
+              Forgot password? Recover here!
+            </Text>
           </Link>
           <Link href="/">
-            <Text mb={2} underline color='text.400'>Do not have an account? Register here!</Text>
+            <Text mb={2} underline color='text.400'>
+              Do not have an account? Register here!
+            </Text>
           </Link>
         </Center>
       </Center>
