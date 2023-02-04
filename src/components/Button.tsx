@@ -9,9 +9,10 @@ export const Button = ({ title, variant, ...rest }: ButtonProps) => {
     <NativeBaseButton
       w='full'
       h={12}
-      bg={variant === 'outline' ? 'transparent' : 'primary.700'}
+      bg={variant === 'outline' ? 'transparent' : 'primary.500'}
       borderWidth={variant === 'outline' ? 1 : 0}
       borderColor='primary.700'
+      borderRadius={8}
       _pressed={{
         bg: 'primary.500'
       }}

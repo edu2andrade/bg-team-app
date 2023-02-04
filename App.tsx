@@ -1,12 +1,18 @@
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'react-native'
 import { NativeBaseProvider } from 'native-base'
 
 import { customTheme } from './src/theme'
 
-import { useFonts, Exo_300Light, Exo_500Medium, Exo_700Bold } from '@expo-google-fonts/exo'
+import { 
+  useFonts, 
+  Exo_300Light, 
+  Exo_500Medium, 
+  Exo_700Bold,
+  Exo_800ExtraBold
+} from '@expo-google-fonts/exo'
 
-import { Loading } from '@components/Loading';
-import { SignIn } from '@screens/SignIn';
+import { Loading } from '@components/Loading'
+import { SignIn } from '@screens/SignIn'
 
 
 export default function App() {
@@ -14,7 +20,8 @@ export default function App() {
   const [ fontsLoaded ] = useFonts({
     Exo_300Light,
     Exo_500Medium,
-    Exo_700Bold
+    Exo_700Bold,
+    Exo_800ExtraBold
   })
   
   return (
@@ -26,5 +33,5 @@ export default function App() {
       />
       { fontsLoaded ? <SignIn /> : <Loading /> }
     </NativeBaseProvider>
-  );
+  )
 }

@@ -13,7 +13,8 @@ export const customTheme = extendTheme({
     text: {
       400: '#6B7280',
       100: '#EBEBEB',
-    }
+    },
+    error: '#F75A68'
   },
   fontConfig: {
     Exo: {
@@ -26,6 +27,9 @@ export const customTheme = extendTheme({
       700: {
         normal: 'Exo_700Bold'
       },
+      800: {
+        normal: 'Exo_800ExtraBold'
+      }
     }
   },
   fonts: {

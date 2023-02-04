@@ -13,9 +13,9 @@ export const Input = ({icon, ...rest}: InputProps) => {
       h={12}
       px={4}
       borderWidth={0}
+      borderRadius={8}
       fontSize='body_1'
       color='text.100'
-      mb={4}
       placeholderTextColor='text.400'
       _focus={{
         bg: 'bg.800',
@@ -23,7 +23,7 @@ export const Input = ({icon, ...rest}: InputProps) => {
         borderColor: 'primary.500'
       }}
       InputLeftElement={
-        <Icon as={icon} ml='4' />
+        <Icon as={icon} ml='4' color="muted.400" />
       }
       {...rest}
     />
