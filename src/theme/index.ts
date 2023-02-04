@@ -14,7 +14,7 @@ export const customTheme = extendTheme({
       400: '#6B7280',
       100: '#EBEBEB',
     },
-    error: '#F75A68'
+    errorColor: '#F75A68'
   },
   fontConfig: {
     Exo: {

@@ -13,10 +13,35 @@ import BgImg from '@assets/bg-img.png'
 import IoMailSvg from '@assets/icons/IoMailOutline.svg'
 import IoLockSvg from '@assets/icons/IoLockClosedOutline.svg'
 
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
 import { Input } from '@components/Input'
 import { Button } from '@components/Button'
 
+const signInSchema = z.object({
+  email: z.string()
+    .email({ message: 'Formato de e-mail inválido' }),
+  password: z.string()
+    .min(6, { message: 'Sua password deve ter pelo menos 6 digitos' })
+})
+
+type FormDataProps = z.infer<typeof signInSchema>
+
 export const SignIn = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormDataProps>({
+    resolver: zodResolver(signInSchema)
+  })
+
+  const onSubmit = (data: FormDataProps) => {
+    console.log(data)
+  }
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1}}
@@ -57,20 +82,44 @@ export const SignIn = () => {
         </Center>
 
         <Center mt={6} w='full'>
-          <Input
-            icon={<IoMailSvg />}
-            placeholder='Teu e-mail aqui'
-            keyboardType='email-address'
-            autoCapitalize='none'
-            mb={2}
+
+          <Controller
+            control={control}
+            name='email'
+            render={({ field: { onChange, value } }) => (
+              <Input
+                mb={2}
+                icon={<IoMailSvg />}
+                placeholder='Teu e-mail aqui'
+                keyboardType='email-address'
+                autoCapitalize='none'
+                onChangeText={onChange}
+                value={value}
+                errorMessage={errors.email?.message}
+              />
+            )}
           />
-          <Input
-            icon={<IoLockSvg />}
-            placeholder='Tua password aqui'
-            secureTextEntry
-            mb={3}
+
+          <Controller
+            control={control}
+            name='password'
+            render={({ field: { onChange, value } }) => (
+              <Input
+                mb={3}
+                icon={<IoLockSvg />}
+                placeholder='Tua password aqui'
+                secureTextEntry
+                onChangeText={onChange}
+                value={value}
+                errorMessage={errors.password?.message}
+              /> 
+            )}
           />
-          <Button title='Login' />
+
+          <Button
+            title='Login'
+            onPress={handleSubmit(onSubmit)}
+          />
         </Center>
 
         <Center mt={6}>
