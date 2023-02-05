@@ -5,7 +5,7 @@ import {
   Center,
   Link,
   Image,
-  ScrollView
+  ScrollView,
 } from 'native-base'
 
 import BgImg from '@assets/bg-img.png'
@@ -27,6 +27,8 @@ const signInSchema = z.object({
     .min(6, { message: 'Sua password deve ter pelo menos 6 digitos' })
 })
 
+// Show error messages on Toast!
+
 type FormDataProps = z.infer<typeof signInSchema>
 
 export const SignIn = () => {
@@ -39,7 +41,11 @@ export const SignIn = () => {
   })
 
   const onSubmit = (data: FormDataProps) => {
-    console.log(data)
+    try {
+      console.log(data)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -88,7 +94,6 @@ export const SignIn = () => {
             name='email'
             render={({ field: { onChange, value } }) => (
               <Input
-                mb={2}
                 icon={<IoMailSvg />}
                 placeholder='Teu e-mail aqui'
                 keyboardType='email-address'
@@ -105,7 +110,6 @@ export const SignIn = () => {
             name='password'
             render={({ field: { onChange, value } }) => (
               <Input
-                mb={3}
                 icon={<IoLockSvg />}
                 placeholder='Tua password aqui'
                 secureTextEntry

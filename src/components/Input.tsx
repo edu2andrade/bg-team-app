@@ -21,11 +21,11 @@ export const Input = ({
   const invalid = !!errorMessage || isInvalid
 
   return (
-    <FormControl>
+    <FormControl mb={3} isInvalid={invalid}>
       <NativeBaseInput
         alignItems='center'
         bg='bg.800'
-        h={12}
+        h={14}
         px={4}
         borderWidth={0}
         borderRadius={8}

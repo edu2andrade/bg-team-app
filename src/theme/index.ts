@@ -46,6 +46,9 @@ export const customTheme = extendTheme({
     heading_2: 28,
     heading_1: 36,
   },
+  sizes: {
+    14: 56,
+  }
 })
 
 // Get the type of the CustomTheme

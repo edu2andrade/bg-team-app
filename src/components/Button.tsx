@@ -8,13 +8,13 @@ export const Button = ({ title, variant, ...rest }: ButtonProps) => {
   return (
     <NativeBaseButton
       w='full'
-      h={12}
+      h={14}
       bg={variant === 'outline' ? 'transparent' : 'primary.500'}
       borderWidth={variant === 'outline' ? 1 : 0}
       borderColor='primary.700'
       borderRadius={8}
       _pressed={{
-        bg: 'primary.500'
+        bg: 'primary.700'
       }}
       {...rest}
     >
