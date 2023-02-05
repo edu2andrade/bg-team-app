@@ -17,7 +17,6 @@ export const Input = ({
   isInvalid,
   ...rest
 }: InputProps) => {
-  // is invalid if errorMessage exists or isInvalid is true.
   const invalid = !!errorMessage || isInvalid
 
   return (
