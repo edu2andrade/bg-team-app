@@ -27,8 +27,6 @@ const signInSchema = z.object({
     .min(6, { message: 'Sua password deve ter pelo menos 6 digitos' })
 })
 
-// Show error messages on Toast!
-
 type FormDataProps = z.infer<typeof signInSchema>
 
 export const SignIn = () => {
@@ -48,6 +46,10 @@ export const SignIn = () => {
     }
   }
 
+  const handleRegister = () => {
+    console.log('Register --> Call payments route')
+  }
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1}}
@@ -65,15 +67,17 @@ export const SignIn = () => {
         position='absolute'
         top={60}
         alignSelf='center'
+        opacity={0.4}
       />
 
-      <VStack flex={1} mb={10} display='flex' justifyContent='flex-end' >
+      <VStack flex={1} mb={16} display='flex' justifyContent='flex-end' >
         <Center >
           <Heading
             color='text.100'
             fontSize={56}
             fontWeight='extrabold'
             textTransform='uppercase'
+            shadow='5'
           >
             BG Team
           </Heading>
@@ -87,8 +91,7 @@ export const SignIn = () => {
           </Text>
         </Center>
 
-        <Center mt={6} w='full'>
-
+        <Center mt={4} w='full'>
           <Controller
             control={control}
             name='email'
@@ -104,7 +107,6 @@ export const SignIn = () => {
               />
             )}
           />
-
           <Controller
             control={control}
             name='password'
@@ -119,28 +121,26 @@ export const SignIn = () => {
               /> 
             )}
           />
-
           <Button
-            title='Login'
             onPress={handleSubmit(onSubmit)}
+            title='Iniciar sessão'
           />
         </Center>
 
-        <Center mt={6}>
+        <Center mt={3}>
+          <Button
+            onPress={handleRegister}
+            title='Regísta-te aqui'
+            variant='outline'
+          />
           <Link href="/">
-            <Text mb={2} underline color='text.400' textDecoration='underline'>
+            <Text mt={2} underline color='text.400' textDecoration='underline'>
               Esqueceste a tua password? Recupera aqui!
-            </Text>
-          </Link>
-          <Link href="/">
-            <Text mb={2} underline color='text.400'>
-              Ainda não tens uma conta? Cria aqui!
             </Text>
           </Link>
         </Center>
 
       </VStack>
-
     </ScrollView>
   )
 }
