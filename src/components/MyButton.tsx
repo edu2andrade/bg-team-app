@@ -4,7 +4,7 @@ interface ButtonProps extends IButtonProps {
   title: string
 }
 
-export const Button = ({ title, variant, ...rest }: ButtonProps) => {
+export const MyButton = ({ title, variant, ...rest }: ButtonProps) => {
   return (
     <NativeBaseButton
       w='full'

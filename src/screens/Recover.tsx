@@ -1,9 +1,7 @@
 import {
   Heading,
   VStack,
-  Text,
   Center,
-  Link,
   Image,
   ScrollView,
 } from 'native-base'
@@ -16,8 +14,11 @@ import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
+import { useNavigation } from '@react-navigation/native'
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
+
 import { Input } from '@components/Input'
-import { Button } from '@components/Button'
+import { MyButton } from '@components/MyButton'
 
 const recoverSchema = z.object({
   email: z.string()
@@ -43,8 +44,10 @@ export const Recover = () => {
     }
   }
 
+  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+
   const handleBackToSignIn = () => {
-    console.log('Back to home called -->')
+    navigation.navigate('SignIn')
   }
 
   return (
@@ -101,13 +104,13 @@ export const Recover = () => {
               />
             )}
           />
-          <Button
+          <MyButton
             onPress={handleSubmit(onSubmit)}
             title='Recuperar password'
           />
         </Center>
 
-        <Button
+        <MyButton
           onPress={handleBackToSignIn}
           title='Voltar ao menu principal'
           variant='outline'

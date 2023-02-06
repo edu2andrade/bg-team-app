@@ -3,9 +3,9 @@ import {
   VStack,
   Text,
   Center,
-  Link,
   Image,
   ScrollView,
+  Button,
 } from 'native-base'
 
 import BgImg from '@assets/bg-img.png'
@@ -17,8 +17,11 @@ import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
+import { useNavigation } from '@react-navigation/native'
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
+
 import { Input } from '@components/Input'
-import { Button } from '@components/Button'
+import { MyButton } from '@components/MyButton'
 
 const signInSchema = z.object({
   email: z.string()
@@ -48,6 +51,12 @@ export const SignIn = () => {
 
   const handleRegister = () => {
     console.log('Register --> Call payments route')
+  }
+
+  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+
+  const handleGoToRecover = () => {
+    navigation.navigate('Recover')
   }
 
   return (
@@ -121,23 +130,26 @@ export const SignIn = () => {
               /> 
             )}
           />
-          <Button
+          <MyButton
             onPress={handleSubmit(onSubmit)}
             title='Iniciar sessão'
           />
         </Center>
 
         <Center mt={3}>
-          <Button
+          <MyButton
             onPress={handleRegister}
             title='Regísta-te aqui'
             variant='outline'
           />
-          <Link href="/">
+          <Button
+            onPress={handleGoToRecover}
+            variant='link'
+          >
             <Text mt={2} underline color='text.400' textDecoration='underline'>
               Esqueceste a tua password? Recupera aqui!
             </Text>
-          </Link>
+          </Button>
         </Center>
 
       </VStack>
