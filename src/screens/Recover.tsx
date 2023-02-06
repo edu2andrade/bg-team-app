@@ -1,17 +1,14 @@
 import {
   Heading,
   VStack,
-  Text,
   Center,
   Image,
   ScrollView,
-  Button,
 } from 'native-base'
 
 import BgImg from '@assets/bg-img.png'
 
 import IoMailSvg from '@assets/icons/IoMailOutline.svg'
-import IoLockSvg from '@assets/icons/IoLockClosedOutline.svg'
 
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -23,22 +20,20 @@ import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
 import { Input } from '@components/Input'
 import { MyButton } from '@components/MyButton'
 
-const signInSchema = z.object({
+const recoverSchema = z.object({
   email: z.string()
     .email({ message: 'Formato de e-mail inválido' }),
-  password: z.string()
-    .min(6, { message: 'Sua password deve ter pelo menos 6 digitos' })
 })
 
-type FormDataProps = z.infer<typeof signInSchema>
+type FormDataProps = z.infer<typeof recoverSchema>
 
-export const SignIn = () => {
+export const Recover = () => {
   const {
     control,
     handleSubmit,
     formState: { errors }
   } = useForm<FormDataProps>({
-    resolver: zodResolver(signInSchema)
+    resolver: zodResolver(recoverSchema)
   })
 
   const onSubmit = (data: FormDataProps) => {
@@ -49,14 +44,10 @@ export const SignIn = () => {
     }
   }
 
-  const handleRegister = () => {
-    console.log('Register --> Call payments route')
-  }
-
   const navigation = useNavigation<AuthNavigatorRoutesProps>()
 
-  const handleGoToRecover = () => {
-    navigation.navigate('Recover')
+  const handleBackToSignIn = () => {
+    navigation.navigate('SignIn')
   }
 
   return (
@@ -79,28 +70,25 @@ export const SignIn = () => {
         opacity={0.4}
       />
 
-      <VStack flex={1} mb={16} display='flex' justifyContent='flex-end' >
-        <Center >
+      <VStack
+        h={96}
+        flex={1}
+        mb={16}
+        display='flex'
+        justifyContent='flex-end'
+      >
+        <Center w='full'>
           <Heading
             color='text.100'
-            fontSize={56}
-            fontWeight='extrabold'
-            textTransform='uppercase'
+            fontSize='2xl'
+            fontWeight='bold'
             shadow='5'
+            textAlign='center'
+            mb={12}
           >
-            BG Team
+            Recupera a tua password
           </Heading>
-          <Text
-            mt={-3}
-            color='text.100'
-            fontSize='subheading'
-            fontWeight={500}
-          >
-            Iniciar sessão
-          </Text>
-        </Center>
 
-        <Center mt={4} w='full'>
           <Controller
             control={control}
             name='email'
@@ -116,41 +104,18 @@ export const SignIn = () => {
               />
             )}
           />
-          <Controller
-            control={control}
-            name='password'
-            render={({ field: { onChange, value } }) => (
-              <Input
-                icon={<IoLockSvg />}
-                placeholder='Tua password aqui'
-                secureTextEntry
-                onChangeText={onChange}
-                value={value}
-                errorMessage={errors.password?.message}
-              /> 
-            )}
-          />
           <MyButton
             onPress={handleSubmit(onSubmit)}
-            title='Iniciar sessão'
+            title='Recuperar password'
           />
         </Center>
 
-        <Center mt={3}>
-          <MyButton
-            onPress={handleRegister}
-            title='Regísta-te aqui'
-            variant='outline'
-          />
-          <Button
-            onPress={handleGoToRecover}
-            variant='link'
-          >
-            <Text mt={2} underline color='text.400' textDecoration='underline'>
-              Esqueceste a tua password? Recupera aqui!
-            </Text>
-          </Button>
-        </Center>
+        <MyButton
+          onPress={handleBackToSignIn}
+          title='Voltar ao menu principal'
+          variant='outline'
+          mt={16}
+        />
 
       </VStack>
     </ScrollView>
