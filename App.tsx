@@ -13,6 +13,7 @@ import {
 
 import { Loading } from '@components/Loading'
 import { SignIn } from '@screens/SignIn'
+import { Recover } from '@screens/Recover'
 
 
 export default function App() {
@@ -31,7 +32,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      { fontsLoaded ? <SignIn /> : <Loading /> }
+      { fontsLoaded ? <Recover /> : <Loading /> }
     </NativeBaseProvider>
   )
 }
