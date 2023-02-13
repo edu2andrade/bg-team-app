@@ -7,7 +7,7 @@ import {
 } from 'native-base'
 
 interface InputProps extends IInputProps {
-  icon: ReactNode
+  icon?: ReactNode
   errorMessage?: string | null
 }
 
