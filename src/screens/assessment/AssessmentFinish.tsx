@@ -7,12 +7,12 @@ import { MyButton } from '@components/MyButton';
 import { useNavigation } from '@react-navigation/native';
 import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 
-export const AssessmentStart = () => {
+export const AssessmentFinish = () => {
 
   const navigation = useNavigation<AssessmentNavigatorRoutesProps>();
 
-  const handleStartAssessment = () => {
-    navigation.navigate('QuestionBirthday');
+  const handleFinishAssessment = () => {
+    navigation.navigate('AssessmentStart');
   };
 
   return (
@@ -35,7 +35,7 @@ export const AssessmentStart = () => {
             fontSize='body_1'
             fontWeight={500}
           >
-            Bem vindo,
+            Tua parte já está feita,
           </Text>
           <Text
             color='text.100'
@@ -49,22 +49,26 @@ export const AssessmentStart = () => {
             mb={3}
             color='text.100'
           >
-            Questionário Inicial
+            Questionário Finalizado
           </Heading>
-          <MDAssignment width={36} height={40} />
-          <MyButton
-            my={8}
-            title='Iniciar Agora'
-            onPress={handleStartAssessment}
-          />
+
           <Text
+            mb={8}
             fontSize='body_1'
             fontWeight={500}
             color='text.100'
             textAlign='center'
           >
-            Este é um passo importante e obrigatório.
+            Em até 48 horas terás tudo preparado começares os treinos.
           </Text>
+
+          <MDAssignment width={36} height={40} />
+
+          <MyButton
+            my={8}
+            title='Enviar e finalizar'
+            onPress={handleFinishAssessment}
+          />
         </Center>
       </VStack>
     </ScrollView>

@@ -9,11 +9,25 @@ import {
 import { QuestionBirthday } from '@screens/assessment/QuestionBirthday'
 import { QuestionProfession } from '@screens/assessment/QuestionProfession'
 import { QuestionGoal } from '@screens/assessment/QuestionGoal'
+import { QuestionHeight } from '@screens/assessment/QuestionHeight'
+import { QuestionWeight } from '@screens/assessment/QuestionWeight'
+import { QuestionSuplements } from '@screens/assessment/QuestionSuplements'
+import { QuestionMeals } from '@screens/assessment/QuestionMeals'
+import { QuestionWorkouts } from '@screens/assessment/QuestionWorkouts'
+import { AssessmentStart } from '@screens/assessment/AssessmentStart'
+import { AssessmentFinish } from '@screens/assessment/AssessmentFinish'
 
 type AssessmentRoutes = {
+  AssessmentStart: undefined;
+  AssessmentFinish: undefined;
   QuestionBirthday: undefined;
   QuestionProfession: undefined;
   QuestionGoal: undefined;
+  QuestionHeight: undefined;
+  QuestionWeight: undefined;
+  QuestionSuplements: undefined;
+  QuestionMeals: undefined;
+  QuestionWorkouts: undefined;
 }
 
 export type AssessmentNavigatorRoutesProps = NativeStackNavigationProp<AssessmentRoutes>
@@ -33,6 +47,10 @@ export const AssessmentRoutes = () => {
       <NavigationContainer theme={theme}>
         <Navigator screenOptions={{ headerShown: false }}>
           <Screen
+            name='AssessmentStart'
+            component={AssessmentStart}
+          />
+          <Screen
             name='QuestionBirthday'
             component={QuestionBirthday}
           />
@@ -43,6 +61,30 @@ export const AssessmentRoutes = () => {
           <Screen
             name='QuestionGoal'
             component={QuestionGoal}
+          />
+          <Screen
+            name='QuestionHeight'
+            component={QuestionHeight}
+          />
+          <Screen
+            name='QuestionWeight'
+            component={QuestionWeight}
+          />
+          <Screen
+            name='QuestionSuplements'
+            component={QuestionSuplements}
+          />
+          <Screen
+            name='QuestionMeals'
+            component={QuestionMeals}
+          />
+          <Screen
+            name='QuestionWorkouts'
+            component={QuestionWorkouts}
+          />
+          <Screen
+            name='AssessmentFinish'
+            component={AssessmentFinish}
           />
         </Navigator>
       </NavigationContainer>

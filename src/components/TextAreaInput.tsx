@@ -1,30 +1,29 @@
 import { ReactNode } from 'react'
 import {
-  Input as NativeBaseInput,
-  IInputProps,
+  TextArea as NativeBaseTextArea,
+  ITextAreaProps,
   Icon,
   FormControl
 } from 'native-base'
 
-interface InputProps extends IInputProps {
-  icon?: ReactNode
+interface TextAreaInputProps extends ITextAreaProps {
   errorMessage?: string | null
 }
 
-export const Input = ({
-  icon,
+export const TextAreaInput = ({
   errorMessage = null,
   isInvalid,
   ...rest
-}: InputProps) => {
+}: TextAreaInputProps) => {
   const invalid = !!errorMessage || isInvalid
 
   return (
     <FormControl mb={3} isInvalid={invalid}>
-      <NativeBaseInput
-        alignItems='center'
+      <NativeBaseTextArea
+        autoCompleteType=''
         bg='bg.800'
-        h={14}
+        h={20}
+        numberOfLines={4}
         px={4}
         borderWidth={0}
         borderRadius={8}
@@ -42,9 +41,6 @@ export const Input = ({
           borderWidth: 1,
           borderColor: 'errorColor'
         }}
-        InputLeftElement={
-          <Icon as={icon} ml='4' />
-        }
         {...rest}
       />
       <FormControl.ErrorMessage _text={{ color: 'errorColor' }}>

@@ -19,40 +19,39 @@ import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 
 import { MyButton } from '@components/MyButton';
 
-const goalSchema = z.object({
-  // Validate goal format with REGEX???
-  goal: z.string({
+const mealsSchema = z.object({
+  // Validate meals format with REGEX???
+  meals: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
   })
 });
 
-type goalDataProps = z.infer<typeof goalSchema>
+type mealsDataProps = z.infer<typeof mealsSchema>
 
-export const QuestionGoal = () => {
+export const QuestionMeals = () => {
 
   const {
     control,
     handleSubmit,
-    formState: { errors }
-  } = useForm<goalDataProps>({
-    resolver: zodResolver(goalSchema)
+  } = useForm<mealsDataProps>({
+    resolver: zodResolver(mealsSchema)
   });
 
   const { getData } = useFormContext();
   const navigation = useNavigation<AssessmentNavigatorRoutesProps>();
 
-  const onSubmit = (data: goalDataProps) => {
+  const onSubmit = (data: mealsDataProps) => {
     try {
       getData(data);
-      navigation.navigate('QuestionHeight');
+      navigation.navigate('QuestionWorkouts');
     } catch (err) {
       console.log(err);
     }
   };
 
   const handlePreviousStep = () => {
-    navigation.navigate('QuestionBirthday');
+    navigation.navigate('QuestionSuplements');
   };
 
   return (
@@ -68,7 +67,7 @@ export const QuestionGoal = () => {
         <Center w="100%">
           <Box w="90%" maxW="400">
             <Progress
-              value={37.5}
+              value={87.5}
               mx="4"
               _filledTrack={{
                 bg: 'primary.500'
@@ -83,12 +82,12 @@ export const QuestionGoal = () => {
             color='text.100'
             textAlign='center'
           >
-            Qual o teu objetivo inicial?
+            Quantas refeições fazes por dia?
           </Heading>
 
           <Controller
             control={control}
-            name='goal'
+            name='meals'
             render={({ field: { onChange, value } }) => (
               <Select
                 selectedValue={value}
@@ -102,17 +101,19 @@ export const QuestionGoal = () => {
                 borderWidth={0}
                 borderRadius={8}
                 placeholderTextColor='text.400'
-                accessibilityLabel="Seleciona o teu objetivo"
-                placeholder="Seleciona o teu objetivo"
+                accessibilityLabel="Seleciona a quantidade de refeições"
+                placeholder="Seleciona a quantidade de refeições"
                 _selectedItem={{
                   bg: 'primary.500',
                   borderRadius: 8
                 }}
                 onValueChange={onChange}
               >
-                <Select.Item label="Perda de gordura" value="Perda de gordura" />
-                <Select.Item label="Tonificar" value="Tonificar" />
-                <Select.Item label="Aumento de massa muscular" value="Aumento de massa muscular" />
+                <Select.Item label="2" value="2" />
+                <Select.Item label="3" value="3" />
+                <Select.Item label="4" value="4" />
+                <Select.Item label="5" value="5" />
+                <Select.Item label="6" value="6" />
               </Select>
             )}
           />
