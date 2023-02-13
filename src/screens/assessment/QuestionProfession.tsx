@@ -6,6 +6,7 @@ import {
   Box,
   Progress,
 } from 'native-base';
+import ChevronRightSvg from '@assets/icons/FaChevronRight.svg'
 
 import { useFormContext } from '../../contexts/FormContext';
 
@@ -44,7 +45,7 @@ export const QuestionProfession = () => {
   const onSubmit = (data: professionDataProps) => {
     try {
       getData(data);
-      navigation.navigate('QuestionBirthday');
+      navigation.navigate('QuestionGoal');
     } catch (err) {
       console.log(err);
     }
@@ -67,7 +68,7 @@ export const QuestionProfession = () => {
         <Center w="100%">
           <Box w="90%" maxW="400">
             <Progress
-              value={20}
+              value={25}
               mx="4"
               _filledTrack={{
                 bg: 'primary.500'
@@ -91,6 +92,7 @@ export const QuestionProfession = () => {
             render={({ field: { onChange, value } }) => (
               <Input
                 type='text'
+                icon={<ChevronRightSvg />}
                 placeholder='Preenche aqui'
                 autoCapitalize='none'
                 onChangeText={onChange}

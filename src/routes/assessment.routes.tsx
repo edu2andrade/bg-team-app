@@ -8,10 +8,12 @@ import {
 
 import { QuestionBirthday } from '@screens/assessment/QuestionBirthday'
 import { QuestionProfession } from '@screens/assessment/QuestionProfession'
+import { QuestionGoal } from '@screens/assessment/QuestionGoal'
 
 type AssessmentRoutes = {
-  QuestionBirthday: undefined
-  QuestionProfession: undefined
+  QuestionBirthday: undefined;
+  QuestionProfession: undefined;
+  QuestionGoal: undefined;
 }
 
 export type AssessmentNavigatorRoutesProps = NativeStackNavigationProp<AssessmentRoutes>
@@ -37,6 +39,10 @@ export const AssessmentRoutes = () => {
           <Screen
             name='QuestionProfession'
             component={QuestionProfession}
+          />
+          <Screen
+            name='QuestionGoal'
+            component={QuestionGoal}
           />
         </Navigator>
       </NavigationContainer>

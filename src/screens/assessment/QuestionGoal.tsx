@@ -5,8 +5,8 @@ import {
   ScrollView,
   Box,
   Progress,
+  Select,
 } from 'native-base';
-import ChevronRightSvg from '@assets/icons/FaChevronRight.svg'
 
 import { useFormContext } from '../../contexts/FormContext';
 
@@ -17,38 +17,42 @@ import { z } from 'zod';
 import { useNavigation } from '@react-navigation/native';
 import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 
-import { Input } from '@components/Input';
 import { MyButton } from '@components/MyButton';
 
-const birthdaySchema = z.object({
-  // Validate birthday format with REGEX???
-  birthday: z.string({
-    required_error: 'Campo obrigatório. Formato: DD-MM-AAAA',
-    invalid_type_error: 'Formato inválido. (DD-MM-AAAA)'
+const goalSchema = z.object({
+  // Validate goal format with REGEX???
+  goal: z.string({
+    required_error: 'Campo obrigatório.',
+    invalid_type_error: 'Formato inválido.'
   })
 });
 
-type birthdayDataProps = z.infer<typeof birthdaySchema>
+type goalDataProps = z.infer<typeof goalSchema>
 
-export const QuestionBirthday = () => {
+export const QuestionGoal = () => {
+
   const {
     control,
     handleSubmit,
     formState: { errors }
-  } = useForm<birthdayDataProps>({
-    resolver: zodResolver(birthdaySchema)
+  } = useForm<goalDataProps>({
+    resolver: zodResolver(goalSchema)
   });
 
   const { getData } = useFormContext();
   const navigation = useNavigation<AssessmentNavigatorRoutesProps>();
 
-  const onSubmit = (data: birthdayDataProps) => {
+  const onSubmit = (data: goalDataProps) => {
     try {
       getData(data);
-      navigation.navigate('QuestionProfession');
+      navigation.navigate('QuestionBirthday');
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handlePreviousStep = () => {
+    navigation.navigate('QuestionBirthday');
   };
 
   return (
@@ -64,7 +68,7 @@ export const QuestionBirthday = () => {
         <Center w="100%">
           <Box w="90%" maxW="400">
             <Progress
-              value={12.5}
+              value={32.5}
               mx="4"
               _filledTrack={{
                 bg: 'primary.500'
@@ -79,22 +83,37 @@ export const QuestionBirthday = () => {
             color='text.100'
             textAlign='center'
           >
-            Qual a tua data de nascimento?
+            Qual o teu objetivo inicial?
           </Heading>
 
           <Controller
             control={control}
-            name='birthday'
+            name='goal'
             render={({ field: { onChange, value } }) => (
-              <Input
-                type='text'
-                icon={<ChevronRightSvg />}
-                placeholder='Preenche aqui'
-                autoCapitalize='none'
-                onChangeText={onChange}
-                value={value}
-                errorMessage={errors.birthday?.message}
-              />
+              <Select
+                selectedValue={value}
+                minWidth="287"
+                h={14}
+                px={4}
+                fontSize='body_1'
+                fontWeight={500}
+                color='text.100'
+                bg='bg.800'
+                borderWidth={0}
+                borderRadius={8}
+                placeholderTextColor='text.400'
+                accessibilityLabel="Seleciona o teu objetivo"
+                placeholder="Seleciona o teu objetivo"
+                _selectedItem={{
+                  bg: 'primary.500',
+                  borderRadius: 8
+                }}
+                onValueChange={onChange}
+              >
+                <Select.Item label="Perda de gordura" value="Perda de gordura" />
+                <Select.Item label="Tonificar" value="Tonificar" />
+                <Select.Item label="Aumento de massa muscular" value="Aumento de massa muscular" />
+              </Select>
             )}
           />
 
@@ -105,6 +124,11 @@ export const QuestionBirthday = () => {
             mb={3}
             onPress={handleSubmit(onSubmit)}
             title='Próxima Pergunta'
+          />
+          <MyButton
+            onPress={handlePreviousStep}
+            title='Voltar à pergunta anterior'
+            variant='outline'
           />
         </Center>
 
