@@ -1,25 +1,24 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
+import { AssessmentDTO } from '@dtos/AssessmentDTO';
 
 type FormContextType = {
-  formData: object;
-  setFormData: (newState: object) => void;
+  formData: AssessmentDTO;
   getData: (newState: object) => void;
 };
 
 const initialValue = {
-  formData: {},
-  setFormData: () => { },
+  formData: {} as AssessmentDTO,
   getData: () => { }
 };
 
-interface FormContextProps {
+interface FormContextProviderProps {
   children: ReactNode;
 };
 
 export const FormContext = createContext<FormContextType>(initialValue);
 
-export const FormContextProvider = ({ children }: FormContextProps) => {
-  const [formData, setFormData] = useState(initialValue.formData);
+export const FormContextProvider = ({ children }: FormContextProviderProps) => {
+  const [formData, setFormData] = useState<AssessmentDTO>({} as AssessmentDTO);
 
   const getData = (data: {}) => {
     setFormData({ ...formData, ...data });
@@ -27,7 +26,7 @@ export const FormContextProvider = ({ children }: FormContextProps) => {
   };
 
   return (
-    <FormContext.Provider value={{ formData, setFormData, getData }}>
+    <FormContext.Provider value={{ formData, getData }}>
       {children}
     </FormContext.Provider>
   )
