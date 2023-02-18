@@ -1,10 +1,8 @@
-import { ReactNode } from 'react'
 import {
   TextArea as NativeBaseTextArea,
   ITextAreaProps,
-  Icon,
   FormControl
-} from 'native-base'
+} from 'native-base';
 
 interface TextAreaInputProps extends ITextAreaProps {
   errorMessage?: string | null
@@ -15,7 +13,7 @@ export const TextAreaInput = ({
   isInvalid,
   ...rest
 }: TextAreaInputProps) => {
-  const invalid = !!errorMessage || isInvalid
+  const invalid = !!errorMessage || isInvalid;
 
   return (
     <FormControl mb={3} isInvalid={invalid}>
@@ -43,9 +41,12 @@ export const TextAreaInput = ({
         }}
         {...rest}
       />
-      <FormControl.ErrorMessage _text={{ color: 'errorColor' }}>
+      <FormControl.ErrorMessage _text={{
+        color: 'errorColor',
+        fontWeight: 300,
+      }}>
         {errorMessage}
       </FormControl.ErrorMessage>
     </FormControl>
-  )
-}
+  );
+};

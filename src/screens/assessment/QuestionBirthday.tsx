@@ -6,7 +6,7 @@ import {
   Box,
   Progress,
 } from 'native-base';
-import ChevronRightSvg from '@assets/icons/FaChevronRight.svg'
+import ChevronRightSvg from '@assets/icons/FaChevronRight.svg';
 
 import { useFormContext } from '../../contexts/FormContext';
 
@@ -19,13 +19,13 @@ import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 
 import { Input } from '@components/Input';
 import { MyButton } from '@components/MyButton';
+import { dateRegex } from '../../constants';
 
 const birthdaySchema = z.object({
   // Validate birthday format with REGEX???
   birthday: z.string({
-    required_error: 'Campo obrigatório. Formato: DD-MM-AAAA',
-    invalid_type_error: 'Formato inválido. (DD-MM-AAAA)'
-  })
+    required_error: 'Campo obrigatório, formato: DD-MM-AAAA',
+  }).regex(dateRegex, {message: 'Formato inválido! (DD-MM-AAAA)'})
 });
 
 type birthdayDataProps = z.infer<typeof birthdaySchema>
@@ -89,11 +89,15 @@ export const QuestionBirthday = () => {
               <Input
                 type='text'
                 icon={<ChevronRightSvg />}
-                placeholder='Preenche aqui'
+                placeholder='Exemplo: 01-12-1996'
+                keyboardType='numbers-and-punctuation'
                 autoCapitalize='none'
                 onChangeText={onChange}
                 value={value}
+                onSubmitEditing={handleSubmit(onSubmit)}
+                returnKeyType='next'
                 errorMessage={errors.birthday?.message}
+                helperMessage= 'Formato esperado: DD-MM-AAAA'
               />
             )}
           />

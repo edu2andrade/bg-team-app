@@ -1,7 +1,6 @@
 import { Center, Heading, ScrollView, Text, VStack } from 'native-base';
 
-import BGTeamLogo from '@assets/bgteam_logo.svg'
-import MDAssignment from '@assets/icons/MdAssignment.svg'
+import BGTeamLogo from '@assets/bgteam_logo.svg';
 import { MyButton } from '@components/MyButton';
 
 import { useNavigation } from '@react-navigation/native';
@@ -10,7 +9,7 @@ import { useFormContext } from '../../contexts/FormContext';
 
 export const AssessmentFinish = () => {
 
-  const { formData } = useFormContext()
+  const { formData } = useFormContext();
   const navigation = useNavigation<AssessmentNavigatorRoutesProps>();
 
   const handleFinishAssessment = () => {
@@ -66,14 +65,18 @@ export const AssessmentFinish = () => {
             bg='bg.800'
           >
             <VStack>
-              <Text color='text.100'>Data de aniversário: {formData.birthday}</Text>
+              <Text color='text.100'>
+                Data de aniversário: {formData.birthday}
+              </Text>
               <Text color='text.100'>Profissão: {formData.profession}</Text>
               <Text color='text.100'>Altura: {formData.height}</Text>
               <Text color='text.100'>Peso: {formData.weight}</Text>
               <Text color='text.100'>Objetivo: {formData.goal}</Text>
               <Text color='text.100'>Refeições por dia: {formData.meals}</Text>
+              <Text color='text.100'>
+                Treinos por semana: {formData.workouts}
+              </Text>
               <Text color='text.100'>Suplementos: {formData.suplements}</Text>
-              <Text color='text.100'>Treinos por semana: {formData.workouts}</Text>
             </VStack>
           </ScrollView>
 

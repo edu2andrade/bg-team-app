@@ -1,23 +1,25 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 import {
   Input as NativeBaseInput,
   IInputProps,
   Icon,
   FormControl
-} from 'native-base'
+} from 'native-base';
 
 interface InputProps extends IInputProps {
   icon?: ReactNode
   errorMessage?: string | null
+  helperMessage?: string | null
 }
 
 export const Input = ({
   icon,
   errorMessage = null,
+  helperMessage = null,
   isInvalid,
   ...rest
 }: InputProps) => {
-  const invalid = !!errorMessage || isInvalid
+  const invalid = !!errorMessage || isInvalid;
 
   return (
     <FormControl mb={3} isInvalid={invalid}>
@@ -47,9 +49,19 @@ export const Input = ({
         }
         {...rest}
       />
-      <FormControl.ErrorMessage _text={{ color: 'errorColor' }}>
+      <FormControl.HelperText _text={{
+        fontSize: 'xs',
+        fontWeight: 300,
+        color: 'text.100'
+      }}>
+        {helperMessage}
+      </FormControl.HelperText>
+      <FormControl.ErrorMessage _text={{
+        color: 'errorColor',
+        fontWeight: 300,
+      }}>
         {errorMessage}
       </FormControl.ErrorMessage>
     </FormControl>
-  )
-}
+  );
+};

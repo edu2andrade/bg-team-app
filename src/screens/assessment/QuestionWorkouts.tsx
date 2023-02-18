@@ -6,6 +6,7 @@ import {
   Box,
   Progress,
   Select,
+  FormControl,
 } from 'native-base';
 
 import { useFormContext } from '../../contexts/FormContext';
@@ -20,7 +21,6 @@ import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 import { MyButton } from '@components/MyButton';
 
 const workoutsSchema = z.object({
-  // Validate workouts format with REGEX???
   workouts: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
@@ -89,32 +89,43 @@ export const QuestionWorkouts = () => {
             control={control}
             name='workouts'
             render={({ field: { onChange, value } }) => (
-              <Select
-                selectedValue={value}
-                minWidth="287"
-                h={14}
-                px={4}
-                fontSize='body_1'
-                fontWeight={300}
-                color='text.100'
-                bg='bg.800'
-                borderWidth={0}
-                borderRadius={8}
-                placeholderTextColor='text.400'
-                accessibilityLabel="Seleciona a quantidade de dias"
-                placeholder="Seleciona a quantidade de dias"
-                _selectedItem={{
-                  bg: 'primary.500',
-                  borderRadius: 8
-                }}
-                onValueChange={onChange}
-              >
-                <Select.Item label="2" value="2" />
-                <Select.Item label="3" value="3" />
-                <Select.Item label="4" value="4" />
-                <Select.Item label="5" value="5" />
-                <Select.Item label="6" value="6" />
-              </Select>
+              <FormControl>
+                <Select
+                  selectedValue={value}
+                  minWidth="287"
+                  h={14}
+                  px={4}
+                  fontSize='body_1'
+                  fontWeight={300}
+                  color='text.100'
+                  bg='bg.800'
+                  borderWidth={0}
+                  borderRadius={8}
+                  placeholderTextColor='text.400'
+                  accessibilityLabel="Seleciona a quantidade de treinos"
+                  placeholder="Seleciona a quantidade de treinos"
+                  _selectedItem={{
+                    bg: 'primary.500',
+                    borderRadius: 8
+                  }}
+                  onValueChange={onChange}
+                >
+                  <Select.Item label="2x por semana" value="2x por semana" />
+                  <Select.Item label="3x por semana" value="3x por semana" />
+                  <Select.Item label="4x por semana" value="4x por semana" />
+                  <Select.Item label="5x por semana" value="5x por semana" />
+                  <Select.Item label="6x por semana" value="6x por semana" />
+                </Select>
+                <FormControl.HelperText
+                  _text={{
+                    fontSize: 'xs',
+                    fontWeight: 300,
+                    color: 'text.100'
+                  }}
+                >
+                  Escolhe uma das opções do menu
+                </FormControl.HelperText>
+              </FormControl>
             )}
           />
 
@@ -124,7 +135,7 @@ export const QuestionWorkouts = () => {
           <MyButton
             mb={3}
             onPress={handleSubmit(onSubmit)}
-            title='Próxima Pergunta'
+            title='Finalizar'
           />
           <MyButton
             onPress={handlePreviousStep}

@@ -6,6 +6,7 @@ import {
   Box,
   Progress,
   Select,
+  FormControl,
 } from 'native-base';
 
 import { useFormContext } from '../../contexts/FormContext';
@@ -20,7 +21,6 @@ import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 import { MyButton } from '@components/MyButton';
 
 const goalSchema = z.object({
-  // Validate goal format with REGEX???
   goal: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
@@ -34,7 +34,6 @@ export const QuestionGoal = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors }
   } = useForm<goalDataProps>({
     resolver: zodResolver(goalSchema)
   });
@@ -52,7 +51,7 @@ export const QuestionGoal = () => {
   };
 
   const handlePreviousStep = () => {
-    navigation.navigate('QuestionBirthday');
+    navigation.navigate('QuestionProfession');
   };
 
   return (
@@ -90,33 +89,52 @@ export const QuestionGoal = () => {
             control={control}
             name='goal'
             render={({ field: { onChange, value } }) => (
-              <Select
-                selectedValue={value}
-                minWidth="287"
-                h={14}
-                px={4}
-                fontSize='body_1'
-                fontWeight={300}
-                color='text.100'
-                bg='bg.800'
-                borderWidth={0}
-                borderRadius={8}
-                placeholderTextColor='text.400'
-                accessibilityLabel="Seleciona o teu objetivo"
-                placeholder="Seleciona o teu objetivo"
-                _selectedItem={{
-                  bg: 'primary.500',
-                  borderRadius: 8
-                }}
-                onValueChange={onChange}
-              >
-                <Select.Item label="Perda de gordura" value="Perda de gordura" />
-                <Select.Item label="Tonificar" value="Tonificar" />
-                <Select.Item label="Aumento de massa muscular" value="Aumento de massa muscular" />
-              </Select>
+              <FormControl>
+                <Select
+                  selectedValue={value}
+                  onValueChange={onChange}
+                  minWidth="287"
+                  h={14}
+                  px={4}
+                  fontSize='body_1'
+                  fontWeight={300}
+                  color='text.100'
+                  bg='bg.800'
+                  borderWidth={0}
+                  borderRadius={8}
+                  placeholderTextColor='text.400'
+                  accessibilityLabel="Seleciona o teu objetivo"
+                  placeholder="Seleciona o teu objetivo"
+                  _selectedItem={{
+                    bg: 'primary.500',
+                    borderRadius: 8
+                  }}
+                >
+                  <Select.Item
+                    label="Perda de gordura"
+                    value="Perda de gordura"
+                  />
+                  <Select.Item
+                    label="Tonificar"
+                    value="Tonificar"
+                  />
+                  <Select.Item
+                    label="Aumento de massa muscular"
+                    value="Aumento de massa muscular"
+                  />
+                </Select>
+                <FormControl.HelperText
+                  _text={{
+                    fontSize: 'xs',
+                    fontWeight: 300,
+                    color: 'text.100'
+                  }}
+                >
+                  Escolhe uma das opções do menu
+                </FormControl.HelperText>
+              </FormControl>
             )}
           />
-
         </Center>
 
         <Center mt={3}>

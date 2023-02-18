@@ -1,4 +1,4 @@
-import { Button as NativeBaseButton, IButtonProps, Text } from 'native-base'
+import { Button as NativeBaseButton, IButtonProps, Text } from 'native-base';
 
 interface ButtonProps extends IButtonProps {
   title: string
@@ -22,5 +22,5 @@ export const MyButton = ({ title, variant, ...rest }: ButtonProps) => {
         {title}
       </Text>
     </NativeBaseButton>
-  )
-}
+  );
+};

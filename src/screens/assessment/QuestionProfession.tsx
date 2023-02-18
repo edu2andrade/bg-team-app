@@ -6,7 +6,7 @@ import {
   Box,
   Progress,
 } from 'native-base';
-import ChevronRightSvg from '@assets/icons/FaChevronRight.svg'
+import ChevronRightSvg from '@assets/icons/FaChevronRight.svg';
 
 import { useFormContext } from '../../contexts/FormContext';
 
@@ -25,7 +25,7 @@ const professionSchema = z.object({
   profession: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
-  })
+  }).max(20, { message: 'Máximo 20 caracteres' })
 });
 
 type professionDataProps = z.infer<typeof professionSchema>
@@ -93,10 +93,12 @@ export const QuestionProfession = () => {
               <Input
                 type='text'
                 icon={<ChevronRightSvg />}
-                placeholder='Preenche aqui'
+                placeholder='Profissão'
                 autoCapitalize='none'
                 onChangeText={onChange}
                 value={value}
+                onSubmitEditing={handleSubmit(onSubmit)}
+                returnKeyType='next'
                 errorMessage={errors.profession?.message}
               />
             )}

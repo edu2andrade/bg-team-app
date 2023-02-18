@@ -6,7 +6,7 @@ import {
   Box,
   Progress,
 } from 'native-base';
-import ChevronRightSvg from '@assets/icons/FaChevronRight.svg'
+import ChevronRightSvg from '@assets/icons/FaChevronRight.svg';
 
 import { useFormContext } from '../../contexts/FormContext';
 
@@ -19,13 +19,12 @@ import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 
 import { Input } from '@components/Input';
 import { MyButton } from '@components/MyButton';
+import { heightRegex } from '../../constants';
 
 const heightSchema = z.object({
-  // Validate height format with REGEX???
   height: z.string({
-    required_error: 'Campo obrigatório.',
-    invalid_type_error: 'Formato inválido.'
-  })
+    required_error: 'Campo obrigatório. Formato: 000cm'
+  }).regex(heightRegex, {message: 'Formato inválido! (000cm)'})
 });
 
 type heightDataProps = z.infer<typeof heightSchema>
@@ -83,7 +82,7 @@ export const QuestionHeight = () => {
             color='text.100'
             textAlign='center'
           >
-            Qual a tua altura?
+            Qual a tua altura? (cm)
           </Heading>
 
           <Controller
@@ -91,13 +90,16 @@ export const QuestionHeight = () => {
             name='height'
             render={({ field: { onChange, value } }) => (
               <Input
-                type='text'
                 icon={<ChevronRightSvg />}
-                placeholder='Preenche aqui'
+                placeholder='Exemplo: 175cm'
                 autoCapitalize='none'
+                keyboardType='numbers-and-punctuation'
                 onChangeText={onChange}
                 value={value}
+                onSubmitEditing={handleSubmit(onSubmit)}
+                returnKeyType='next'
                 errorMessage={errors.height?.message}
+                helperMessage= 'Formato esperado: 000cm'
               />
             )}
           />

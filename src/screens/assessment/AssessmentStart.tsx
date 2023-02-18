@@ -1,7 +1,7 @@
 import { Center, Heading, ScrollView, Text, VStack } from 'native-base';
 
 import BGTeamLogo from '@assets/bgteam_logo.svg';
-import MDAssignment from '@assets/icons/MdAssignment.svg'
+import MDAssignment from '@assets/icons/MdAssignment.svg';
 import { MyButton } from '@components/MyButton';
 
 import { useNavigation } from '@react-navigation/native';

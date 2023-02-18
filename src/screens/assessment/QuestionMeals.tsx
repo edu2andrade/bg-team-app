@@ -6,6 +6,7 @@ import {
   Box,
   Progress,
   Select,
+  FormControl,
 } from 'native-base';
 
 import { useFormContext } from '../../contexts/FormContext';
@@ -20,7 +21,6 @@ import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 import { MyButton } from '@components/MyButton';
 
 const mealsSchema = z.object({
-  // Validate meals format with REGEX???
   meals: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
@@ -89,32 +89,43 @@ export const QuestionMeals = () => {
             control={control}
             name='meals'
             render={({ field: { onChange, value } }) => (
-              <Select
-                selectedValue={value}
-                minWidth="287"
-                h={14}
-                px={4}
-                fontSize='body_1'
-                fontWeight={300}
-                color='text.100'
-                bg='bg.800'
-                borderWidth={0}
-                borderRadius={8}
-                placeholderTextColor='text.400'
-                accessibilityLabel="Seleciona a quantidade de refeições"
-                placeholder="Seleciona a quantidade de refeições"
-                _selectedItem={{
-                  bg: 'primary.500',
-                  borderRadius: 8
-                }}
-                onValueChange={onChange}
-              >
-                <Select.Item label="2" value="2" />
-                <Select.Item label="3" value="3" />
-                <Select.Item label="4" value="4" />
-                <Select.Item label="5" value="5" />
-                <Select.Item label="6" value="6" />
-              </Select>
+              <FormControl>
+                <Select
+                  selectedValue={value}
+                  minWidth="287"
+                  h={14}
+                  px={4}
+                  fontSize='body_1'
+                  fontWeight={300}
+                  color='text.100'
+                  bg='bg.800'
+                  borderWidth={0}
+                  borderRadius={8}
+                  placeholderTextColor='text.400'
+                  accessibilityLabel="Seleciona a quantidade de refeições"
+                  placeholder="Seleciona a quantidade de refeições"
+                  _selectedItem={{
+                    bg: 'primary.500',
+                    borderRadius: 8
+                  }}
+                  onValueChange={onChange}
+                >
+                  <Select.Item label="2x por dia" value="2x por dia" />
+                  <Select.Item label="3x por dia" value="3x por dia" />
+                  <Select.Item label="4x por dia" value="4x por dia" />
+                  <Select.Item label="5x por dia" value="5x por dia" />
+                  <Select.Item label="6x por dia" value="6x por dia" />
+                </Select>
+                <FormControl.HelperText
+                  _text={{
+                    fontSize: 'xs',
+                    fontWeight: 300,
+                    color: 'text.100'
+                  }}
+                >
+                  Escolhe uma das opções do menu
+                </FormControl.HelperText>
+              </FormControl>
             )}
           />
 

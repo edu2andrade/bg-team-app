@@ -6,7 +6,6 @@ import {
   Box,
   Progress,
 } from 'native-base';
-import ChevronRightSvg from '@assets/icons/FaChevronRight.svg'
 
 import { useFormContext } from '../../contexts/FormContext';
 
@@ -17,12 +16,10 @@ import { z } from 'zod';
 import { useNavigation } from '@react-navigation/native';
 import { AssessmentNavigatorRoutesProps } from '@routes/assessment.routes';
 
-import { Input } from '@components/Input';
 import { MyButton } from '@components/MyButton';
 import { TextAreaInput } from '@components/TextAreaInput';
 
 const suplementsSchema = z.object({
-  // Validate suplements format with REGEX???
   suplements: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
@@ -92,10 +89,12 @@ export const QuestionSuplements = () => {
             name='suplements'
             render={({ field: { onChange, value } }) => (
               <TextAreaInput
-                placeholder='Preenche aqui'
+                placeholder='Descreve tudo aqui!'
                 autoCapitalize='none'
                 onChangeText={onChange}
                 value={value}
+                onSubmitEditing={handleSubmit(onSubmit)}
+                returnKeyType='next'
                 errorMessage={errors.suplements?.message}
               />
             )}

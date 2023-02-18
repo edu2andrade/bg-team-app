@@ -8,19 +8,21 @@ type FormContextType = {
 
 const initialValue = {
   formData: {} as AssessmentDTO,
-  getData: () => { }
+  getData: () => {
+    // empty object
+  }
 };
 
 interface FormContextProviderProps {
   children: ReactNode;
-};
+}
 
 export const FormContext = createContext<FormContextType>(initialValue);
 
 export const FormContextProvider = ({ children }: FormContextProviderProps) => {
   const [formData, setFormData] = useState<AssessmentDTO>({} as AssessmentDTO);
 
-  const getData = (data: {}) => {
+  const getData = (data: object) => {
     setFormData({ ...formData, ...data });
     console.log(formData);
   };
@@ -29,13 +31,15 @@ export const FormContextProvider = ({ children }: FormContextProviderProps) => {
     <FormContext.Provider value={{ formData, getData }}>
       {children}
     </FormContext.Provider>
-  )
+  );
 };
 
 export const useFormContext = () => {
   const context = useContext(FormContext);
   if (!context) {
-    throw new Error('useFormContext must be used within the FormContextProvider');
+    throw new Error(
+      'useFormContext must be used within the FormContextProvider'
+    );
   }
   return context;
 };
