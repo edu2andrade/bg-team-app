@@ -1,4 +1,12 @@
-import { Center, Heading, ScrollView, Text, VStack } from 'native-base';
+import {
+  Button, 
+  Center, 
+  Heading, 
+  HStack, 
+  ScrollView, 
+  Text, 
+  VStack 
+} from 'native-base';
 
 import BGTeamLogo from '@assets/bgteam_logo.svg';
 import { MyButton } from '@components/MyButton';
@@ -10,19 +18,19 @@ import { useFormContext } from '../../contexts/FormContext';
 export const AssessmentFinish = () => {
 
   const { formData } = useFormContext();
-  const navigation = useNavigation<AssessmentNavigatorRoutesProps>();
+  const { navigate } = useNavigation<AssessmentNavigatorRoutesProps>();
 
   const handleFinishAssessment = () => {
     // Send data to db
     console.log(formData);
-    navigation.navigate('AssessmentStart');
+    navigate('AssessmentStart');
   };
 
   return (
     <VStack
       mt={8}
       flex={1}
-      px={10}
+      px={8}
       bg='bg.900'
     >
       <VStack
@@ -31,23 +39,11 @@ export const AssessmentFinish = () => {
       >
         <Center mb={4}>
           <BGTeamLogo width={100} height={100} />
-          <Text
-            mt={3}
-            mb={-1}
-            color='text.100'
-            fontSize='body_1'
-            fontWeight={500}
-          >
-            Tua parte já está feita,
-          </Text>
-          <Text
-            color='text.100'
-            fontSize='subheading'
-            fontWeight={700}
-          >Bernardo</Text>
         </Center>
 
-        <Center justifyContent='center'>
+        <Center
+          justifyContent='center'
+        >
           <Heading
             mb={3}
             color='text.100'
@@ -57,26 +53,220 @@ export const AssessmentFinish = () => {
           </Heading>
 
           <ScrollView
-            minH={56}
-            minW={72}
+            minH='56'
+            w='full'
             borderRadius={8}
             showsVerticalScrollIndicator={false}
             p={4}
             bg='bg.800'
           >
             <VStack>
-              <Text color='text.100'>
-                Data de aniversário: {formData.birthday}
-              </Text>
-              <Text color='text.100'>Profissão: {formData.profession}</Text>
-              <Text color='text.100'>Altura: {formData.height}</Text>
-              <Text color='text.100'>Peso: {formData.weight}</Text>
-              <Text color='text.100'>Objetivo: {formData.goal}</Text>
-              <Text color='text.100'>Refeições por dia: {formData.meals}</Text>
-              <Text color='text.100'>
-                Treinos por semana: {formData.workouts}
-              </Text>
-              <Text color='text.100'>Suplementos: {formData.suplements}</Text>
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Data de nasc.:</Text> {formData.birthday}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionBirthday')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Profissão:</Text> {formData.profession}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionProfession')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Altura:</Text> {formData.height}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionHeight')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Peso:</Text> {formData.weight}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionWeight')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Objetivo:</Text> {formData.goal}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionGoal')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Refeições:</Text> {formData.meals}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionMeals')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <HStack
+                mb={3}
+                alignItems='center'
+                justifyContent='space-between'
+              >
+                <Text color='text.100'>
+                  <Text bold>Treinos:</Text> {formData.workouts}
+                </Text>
+                <Button
+                  onPress={() => navigate('QuestionWorkouts')}
+                  bgColor='primary.500'
+                  h={8}
+                  p={2}
+                  alignItems='center'
+                >
+                  <Text
+                    color='text.100'
+                    fontSize='caption'
+                    fontWeight={500}
+                  >
+                    Editar
+                  </Text>
+                </Button>
+              </HStack>
+
+              <VStack>
+                <HStack
+                  mb={3}
+                  alignItems='center'
+                  justifyContent='space-between'
+                >
+                  <Text color='text.100'>
+                    <Text bold>Suplementos:</Text>
+                  </Text>
+                  <Button
+                    onPress={() => navigate('QuestionSuplements')}
+                    bgColor='primary.500'
+                    h={8}
+                    p={2}
+                    alignItems='center'
+                  >
+                    <Text
+                      color='text.100'
+                      fontSize='caption'
+                      fontWeight={500}
+                    >
+                      Editar
+                    </Text>
+                  </Button>
+                </HStack>
+                <Text
+                  color='text.100'
+                >
+                  {formData.suplements}
+                </Text>
+              </VStack>
             </VStack>
           </ScrollView>
 

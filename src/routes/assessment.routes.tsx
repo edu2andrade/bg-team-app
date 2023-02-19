@@ -1,21 +1,21 @@
-import { Box, useTheme } from 'native-base'
+import { Box, useTheme } from 'native-base';
 
-import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp
-} from '@react-navigation/native-stack'
+} from '@react-navigation/native-stack';
 
-import { QuestionBirthday } from '@screens/assessment/QuestionBirthday'
-import { QuestionProfession } from '@screens/assessment/QuestionProfession'
-import { QuestionGoal } from '@screens/assessment/QuestionGoal'
-import { QuestionHeight } from '@screens/assessment/QuestionHeight'
-import { QuestionWeight } from '@screens/assessment/QuestionWeight'
-import { QuestionSuplements } from '@screens/assessment/QuestionSuplements'
-import { QuestionMeals } from '@screens/assessment/QuestionMeals'
-import { QuestionWorkouts } from '@screens/assessment/QuestionWorkouts'
-import { AssessmentStart } from '@screens/assessment/AssessmentStart'
-import { AssessmentFinish } from '@screens/assessment/AssessmentFinish'
+import { QuestionBirthday } from '@screens/assessment/QuestionBirthday';
+import { QuestionProfession } from '@screens/assessment/QuestionProfession';
+import { QuestionGoal } from '@screens/assessment/QuestionGoal';
+import { QuestionHeight } from '@screens/assessment/QuestionHeight';
+import { QuestionWeight } from '@screens/assessment/QuestionWeight';
+import { QuestionSuplements } from '@screens/assessment/QuestionSuplements';
+import { QuestionMeals } from '@screens/assessment/QuestionMeals';
+import { QuestionWorkouts } from '@screens/assessment/QuestionWorkouts';
+import { AssessmentStart } from '@screens/assessment/AssessmentStart';
+import { AssessmentFinish } from '@screens/assessment/AssessmentFinish';
 
 type AssessmentRoutes = {
   AssessmentStart: undefined;
@@ -30,14 +30,15 @@ type AssessmentRoutes = {
   QuestionWorkouts: undefined;
 }
 
-export type AssessmentNavigatorRoutesProps = NativeStackNavigationProp<AssessmentRoutes>
-const { Navigator, Screen } = createNativeStackNavigator<AssessmentRoutes>()
+export type AssessmentNavigatorRoutesProps = 
+  NativeStackNavigationProp<AssessmentRoutes>
+const { Navigator, Screen } = createNativeStackNavigator<AssessmentRoutes>();
 
 export const AssessmentRoutes = () => {
 
-  const { colors } = useTheme()
-  const theme = DefaultTheme
-  theme.colors.background = colors.bg[900]
+  const { colors } = useTheme();
+  const theme = DefaultTheme;
+  theme.colors.background = colors.bg[900];
 
   return (
     <Box
@@ -89,5 +90,5 @@ export const AssessmentRoutes = () => {
         </Navigator>
       </NavigationContainer>
     </Box>
-  )
-}
+  );
+};

@@ -119,8 +119,8 @@ export const QuestionGoal = () => {
                     value="Tonificar"
                   />
                   <Select.Item
-                    label="Aumento de massa muscular"
-                    value="Aumento de massa muscular"
+                    label="Aumento de massa musc."
+                    value="Aumento de massa musc."
                   />
                 </Select>
                 <FormControl.HelperText

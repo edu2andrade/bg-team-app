@@ -135,7 +135,7 @@ export const QuestionWorkouts = () => {
           <MyButton
             mb={3}
             onPress={handleSubmit(onSubmit)}
-            title='Finalizar'
+            title='Confirmar respostas'
           />
           <MyButton
             onPress={handlePreviousStep}
