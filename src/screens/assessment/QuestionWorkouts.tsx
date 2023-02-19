@@ -44,7 +44,7 @@ export const QuestionWorkouts = () => {
   const onSubmit = (data: workoutsDataProps) => {
     try {
       getData(data);
-      navigation.navigate('AssessmentFinish');
+      navigation.navigate('AssessmentConfirm');
     } catch (err) {
       console.log(err);
     }

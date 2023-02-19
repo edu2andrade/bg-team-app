@@ -1,7 +1,8 @@
 import {
   TextArea as NativeBaseTextArea,
   ITextAreaProps,
-  FormControl
+  FormControl,
+  WarningOutlineIcon
 } from 'native-base';
 
 interface TextAreaInputProps extends ITextAreaProps {
@@ -44,7 +45,9 @@ export const TextAreaInput = ({
       <FormControl.ErrorMessage _text={{
         color: 'errorColor',
         fontWeight: 300,
-      }}>
+      }}
+      leftIcon={<WarningOutlineIcon size='xs' />}
+      >
         {errorMessage}
       </FormControl.ErrorMessage>
     </FormControl>

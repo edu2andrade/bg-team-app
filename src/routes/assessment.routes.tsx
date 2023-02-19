@@ -15,11 +15,12 @@ import { QuestionSuplements } from '@screens/assessment/QuestionSuplements';
 import { QuestionMeals } from '@screens/assessment/QuestionMeals';
 import { QuestionWorkouts } from '@screens/assessment/QuestionWorkouts';
 import { AssessmentStart } from '@screens/assessment/AssessmentStart';
+import { AssessmentConfirm } from '@screens/assessment/AssessmentConfirm';
 import { AssessmentFinish } from '@screens/assessment/AssessmentFinish';
 
 type AssessmentRoutes = {
   AssessmentStart: undefined;
-  AssessmentFinish: undefined;
+  AssessmentConfirm: undefined;
   QuestionBirthday: undefined;
   QuestionProfession: undefined;
   QuestionGoal: undefined;
@@ -28,6 +29,7 @@ type AssessmentRoutes = {
   QuestionSuplements: undefined;
   QuestionMeals: undefined;
   QuestionWorkouts: undefined;
+  AssessmentFinish: undefined;
 }
 
 export type AssessmentNavigatorRoutesProps = 
@@ -82,6 +84,10 @@ export const AssessmentRoutes = () => {
           <Screen
             name='QuestionWorkouts'
             component={QuestionWorkouts}
+          />
+          <Screen
+            name='AssessmentConfirm'
+            component={AssessmentConfirm}
           />
           <Screen
             name='AssessmentFinish'

@@ -23,7 +23,7 @@ const suplementsSchema = z.object({
   suplements: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'
-  })
+  }).min(3, { message: 'Mínimo 3 caracteres.' })
 });
 
 type suplementsDataProps = z.infer<typeof suplementsSchema>

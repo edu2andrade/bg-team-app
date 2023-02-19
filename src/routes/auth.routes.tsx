@@ -1,13 +1,13 @@
-import { Box, useTheme } from 'native-base'
+import { Box, useTheme } from 'native-base';
 
-import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp
-} from '@react-navigation/native-stack'
+} from '@react-navigation/native-stack';
 
-import { Recover } from '@screens/Recover'
-import { SignIn } from '@screens/SignIn'
+import { Recover } from '@screens/Recover';
+import { SignIn } from '@screens/SignIn';
 
 type AuthRoutes = {
   SignIn: undefined
@@ -15,13 +15,13 @@ type AuthRoutes = {
 }
 
 export type AuthNavigatorRoutesProps = NativeStackNavigationProp<AuthRoutes>
-const { Navigator, Screen } = createNativeStackNavigator<AuthRoutes>()
+const { Navigator, Screen } = createNativeStackNavigator<AuthRoutes>();
 
 export const AuthRoutes = () => {
 
-  const { colors } = useTheme()
-  const theme = DefaultTheme
-  theme.colors.background = colors.bg[900]
+  const { colors } = useTheme();
+  const theme = DefaultTheme;
+  theme.colors.background = colors.bg[900];
 
   return (
     <Box
@@ -41,5 +41,5 @@ export const AuthRoutes = () => {
         </Navigator>
       </NavigationContainer>
     </Box>
-  )
-}
+  );
+};

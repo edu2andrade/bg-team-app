@@ -3,7 +3,8 @@ import {
   Input as NativeBaseInput,
   IInputProps,
   Icon,
-  FormControl
+  FormControl,
+  WarningOutlineIcon
 } from 'native-base';
 
 interface InputProps extends IInputProps {
@@ -59,7 +60,9 @@ export const Input = ({
       <FormControl.ErrorMessage _text={{
         color: 'errorColor',
         fontWeight: 300,
-      }}>
+      }}
+      leftIcon={<WarningOutlineIcon size='xs' />}
+      >
         {errorMessage}
       </FormControl.ErrorMessage>
     </FormControl>
