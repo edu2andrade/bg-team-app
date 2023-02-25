@@ -18,7 +18,7 @@ import { AssessmentStart } from '@screens/assessment/AssessmentStart';
 import { AssessmentConfirm } from '@screens/assessment/AssessmentConfirm';
 import { AssessmentFinish } from '@screens/assessment/AssessmentFinish';
 
-type AssessmentRoutes = {
+export type AssessmentRoutes = {
   AssessmentStart: undefined;
   AssessmentConfirm: undefined;
   QuestionBirthday: undefined;

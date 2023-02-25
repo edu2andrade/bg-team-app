@@ -1,6 +1,8 @@
 import {
+  Button,
   Center, 
   Heading,
+  Link,
   Text, 
   VStack 
 } from 'native-base';
@@ -21,7 +23,7 @@ export const AssessmentFinish = () => {
         mt={32}
         justifyContent='flex-start'
       >
-        <Center mb={4}>
+        <Center mb={12}>
           <BGTeamLogo width={100} height={100} />
         </Center>
 
@@ -36,13 +38,27 @@ export const AssessmentFinish = () => {
             Questionário Finalizado
           </Heading>
           <Text
+            w={72}
             textAlign='center'
+            fontWeight={300}
+            fontSize='body_1'
             color='text.100'
           >
-            Teu plano de treino estará pronto em até 3 dias úteis.
+            O questionário foi enviado com sucesso. 
+            O teu plano de treino e dieta estarão prontos em até 2 dias úteis.
           </Text>
+          <Link
+            href='mailto:bernardo@galvaocoach.com'
+            mt={6}
+            textAlign='center'
+            isExternal _text={{
+              color: 'text.100',
+              fontWeight: '500'
+            }}
+          >
+              Ainda tens dúvidas? Contácta-me aqui.
+          </Link>
         </Center>
-
       </VStack>
     </VStack>
   );
