@@ -1,37 +1,41 @@
-import { StatusBar } from 'react-native'
-import { NativeBaseProvider } from 'native-base'
+import { StatusBar } from 'react-native';
+import { NativeBaseProvider } from 'native-base';
 
-import { customTheme } from './src/theme'
+import { customTheme } from './src/theme';
 
-import { 
-  useFonts, 
-  Exo_300Light, 
-  Exo_500Medium, 
+import {
+  useFonts,
+  Exo_300Light,
+  Exo_500Medium,
   Exo_700Bold,
   Exo_800ExtraBold
-} from '@expo-google-fonts/exo'
+} from '@expo-google-fonts/exo';
 
-import { Loading } from '@components/Loading'
-import { AuthRoutes } from '@routes/auth.routes'
+import { Loading } from '@components/Loading';
+import { AuthRoutes } from '@routes/auth.routes';
+import { AssessmentRoutes } from '@routes/assessment.routes';
+import { FormContextProvider } from './src/contexts/FormContext';
 
 
 export default function App() {
 
-  const [ fontsLoaded ] = useFonts({
+  const [fontsLoaded] = useFonts({
     Exo_300Light,
     Exo_500Medium,
     Exo_700Bold,
     Exo_800ExtraBold
-  })
-  
+  });
+
   return (
     <NativeBaseProvider theme={customTheme}>
-      <StatusBar
-        barStyle='light-content'
-        backgroundColor='transparent'
-        translucent
-      />
-      { fontsLoaded ? <AuthRoutes /> : <Loading /> }
+      <FormContextProvider>
+        <StatusBar
+          barStyle='light-content'
+          backgroundColor='transparent'
+          translucent
+        />
+        {fontsLoaded ? <AssessmentRoutes /> : <Loading />}
+      </FormContextProvider>
     </NativeBaseProvider>
-  )
+  );
 }

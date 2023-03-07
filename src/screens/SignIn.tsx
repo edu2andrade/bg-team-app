@@ -6,29 +6,29 @@ import {
   Image,
   ScrollView,
   Button,
-} from 'native-base'
+} from 'native-base';
 
-import BgImg from '@assets/bg-img.png'
+import BgImg from '@assets/bg-img.png';
 
-import IoMailSvg from '@assets/icons/IoMailOutline.svg'
-import IoLockSvg from '@assets/icons/IoLockClosedOutline.svg'
+import IoMailSvg from '@assets/icons/IoMailOutline.svg';
+import IoLockSvg from '@assets/icons/IoLockClosedOutline.svg';
 
-import { useForm, Controller } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
-import { useNavigation } from '@react-navigation/native'
-import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
-import { Input } from '@components/Input'
-import { MyButton } from '@components/MyButton'
+import { Input } from '@components/Input';
+import { MyButton } from '@components/MyButton';
 
 const signInSchema = z.object({
   email: z.string()
     .email({ message: 'Formato de e-mail inválido' }),
   password: z.string()
     .min(6, { message: 'Sua password deve ter pelo menos 6 digitos' })
-})
+});
 
 type FormDataProps = z.infer<typeof signInSchema>
 
@@ -39,25 +39,25 @@ export const SignIn = () => {
     formState: { errors }
   } = useForm<FormDataProps>({
     resolver: zodResolver(signInSchema)
-  })
+  });
 
   const onSubmit = (data: FormDataProps) => {
     try {
-      console.log(data)
+      console.log(data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleRegister = () => {
-    console.log('Register --> Call payments route')
-  }
+    console.log('Register --> Call payments route');
+  };
 
-  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   const handleGoToRecover = () => {
-    navigation.navigate('Recover')
-  }
+    navigation.navigate('Recover');
+  };
 
   return (
     <ScrollView
@@ -146,7 +146,14 @@ export const SignIn = () => {
             onPress={handleGoToRecover}
             variant='link'
           >
-            <Text mt={2} underline color='text.400' textDecoration='underline'>
+            <Text
+              mt={2} 
+              underline
+              color='text.400'
+              fontSize='body_2'
+              fontWeight={300}
+              textAlign='center'
+            >
               Esqueceste a tua password? Recupera aqui!
             </Text>
           </Button>
@@ -154,5 +161,5 @@ export const SignIn = () => {
 
       </VStack>
     </ScrollView>
-  )
-}
+  );
+};

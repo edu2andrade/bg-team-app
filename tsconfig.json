@@ -24,6 +24,9 @@
       ],
       "@routes/*": [
         "./src/routes/*"
+      ],
+      "@dtos/*": [
+        "./src/dtos/*"
       ]
     }
   }

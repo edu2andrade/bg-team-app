@@ -1,4 +1,4 @@
-import { extendTheme } from 'native-base'
+import { extendTheme } from 'native-base';
 
 export const customTheme = extendTheme({
   colors: {
@@ -49,7 +49,7 @@ export const customTheme = extendTheme({
   sizes: {
     14: 56,
   }
-})
+});
 
 // Get the type of the CustomTheme
 type CustomThemeType = typeof customTheme
