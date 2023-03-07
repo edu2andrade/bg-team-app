@@ -14,7 +14,6 @@ import {
 import { Loading } from '@components/Loading';
 import { AuthRoutes } from '@routes/auth.routes';
 import { AssessmentRoutes } from '@routes/assessment.routes';
-import { QuestionBirthday } from '@screens/assessment/QuestionBirthday';
 import { FormContextProvider } from './src/contexts/FormContext';
 
 

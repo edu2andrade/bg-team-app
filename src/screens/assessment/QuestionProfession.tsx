@@ -21,7 +21,6 @@ import { Input } from '@components/Input';
 import { MyButton } from '@components/MyButton';
 
 const professionSchema = z.object({
-  // Validate profession format with REGEX???
   profession: z.string({
     required_error: 'Campo obrigatório.',
     invalid_type_error: 'Formato inválido.'

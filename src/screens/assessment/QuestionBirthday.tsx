@@ -22,7 +22,6 @@ import { MyButton } from '@components/MyButton';
 import { dateRegex } from '../../constants';
 
 const birthdaySchema = z.object({
-  // Validate birthday format with REGEX???
   birthday: z.string({
     required_error: 'Campo obrigatório, formato: DD-MM-AAAA',
   }).regex(dateRegex, {message: 'Formato inválido! (DD-MM-AAAA)'})

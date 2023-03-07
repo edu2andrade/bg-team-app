@@ -24,7 +24,6 @@ export const FormContextProvider = ({ children }: FormContextProviderProps) => {
 
   const getData = (data: object) => {
     setFormData({ ...formData, ...data });
-    console.log(formData);
   };
 
   return (
