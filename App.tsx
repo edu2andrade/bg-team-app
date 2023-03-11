@@ -11,9 +11,9 @@ import {
   Exo_800ExtraBold
 } from '@expo-google-fonts/exo';
 
+import { Routes } from '@routes/index';
 import { Loading } from '@components/Loading';
-import { AuthRoutes } from '@routes/auth.routes';
-import { AssessmentRoutes } from '@routes/assessment.routes';
+
 import { FormContextProvider } from './src/contexts/FormContext';
 
 
@@ -34,7 +34,7 @@ export default function App() {
           backgroundColor='transparent'
           translucent
         />
-        {fontsLoaded ? <AssessmentRoutes /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </FormContextProvider>
     </NativeBaseProvider>
   );

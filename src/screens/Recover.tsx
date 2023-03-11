@@ -4,26 +4,26 @@ import {
   Center,
   Image,
   ScrollView,
-} from 'native-base'
+} from 'native-base';
 
-import BgImg from '@assets/bg-img.png'
+import BgImg from '@assets/bg-img.png';
 
-import IoMailSvg from '@assets/icons/IoMailOutline.svg'
+import IoMailSvg from '@assets/icons/IoMailOutline.svg';
 
-import { useForm, Controller } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
-import { useNavigation } from '@react-navigation/native'
-import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
+import { useNavigation } from '@react-navigation/native';
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes';
 
-import { Input } from '@components/Input'
-import { MyButton } from '@components/MyButton'
+import { Input } from '@components/Input';
+import { MyButton } from '@components/MyButton';
 
 const recoverSchema = z.object({
   email: z.string()
     .email({ message: 'Formato de e-mail inválido' }),
-})
+});
 
 type FormDataProps = z.infer<typeof recoverSchema>
 
@@ -34,21 +34,21 @@ export const Recover = () => {
     formState: { errors }
   } = useForm<FormDataProps>({
     resolver: zodResolver(recoverSchema)
-  })
+  });
 
   const onSubmit = (data: FormDataProps) => {
     try {
-      console.log(data)
+      console.log(data);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
-  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
 
   const handleBackToSignIn = () => {
-    navigation.navigate('SignIn')
-  }
+    navigation.navigate('SignIn');
+  };
 
   return (
     <ScrollView
@@ -119,5 +119,5 @@ export const Recover = () => {
 
       </VStack>
     </ScrollView>
-  )
-}
+  );
+};
